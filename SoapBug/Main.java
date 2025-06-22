@@ -7,10 +7,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.File;
+import java.nio.file.*;
 import java.net.URL;
 import java.io.FileOutputStream;
 import java.io.BufferedInputStream;
 import java.io.StringReader;
+import java.util.List;
 
 public class Main{
     public static void main(String[] args) throws java.io.IOException {
@@ -24,12 +26,8 @@ public class Main{
         
         JPanel panel = new JPanel();
         
-        String games = "";
-        
-        try (BufferedReader reader = new BufferedReader(new FileReader("downloadable.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {games = line;}
-        } catch (IOException e) {System.err.println("Error reading file: " + e.getMessage());}
+        String games = Files.readString(Paths.get("downloadable.txt"));
+
         JTextArea textArea = new JTextArea(16, 39);
         textArea.setBackground(Color.BLACK);
         textArea.setForeground(Color.WHITE);
@@ -39,7 +37,7 @@ public class Main{
         sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         
-        String dialogue = "INSERT GAME NAME HERE\n^^^^^^^^^^^^^^^^^^^^^\n\nAvailable Games:\n"+games;
+        String dialogue = "INSERT GAME NAME HERE (e.g. c.exe)\n^^^^^^^^^^^^^^^^^^^^^\n\nAvailable Games:\n"+games;
         textArea.setText(dialogue+"\n\npress ctrl+enter");
         
         panel.setBackground(Color.BLACK);

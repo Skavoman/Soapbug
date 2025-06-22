@@ -1,1 +1,3 @@
 https://raw.githubusercontent.com/Skavoman/HAg/refs/heads/main/HAg.vbs
+https://github.com/thbop/TinyGames/releases/download/1.2/a.exe
+https://github.com/thbop/TinyGames/releases/download/1.2/c.exe
